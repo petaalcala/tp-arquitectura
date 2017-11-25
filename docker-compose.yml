@@ -1,0 +1,33 @@
+version: '3.3'
+services:
+    flask:
+        build:
+            context: .
+            dockerfile: flask.dockerfile
+        ports:
+            - "5000:5000"
+        volumes:
+            - ./py:/app/py
+        environment:
+            - FLASK_APP=tp.py
+        command: flask run --host=0.0.0.0
+
+    gunicorn:
+        build:
+            context: .
+            dockerfile: gunicorn.dockerfile
+        volumes:
+            - ./py:/app/py
+        ports:
+            - "5001:5001"
+        command: gunicorn tp -b 0.0.0.0:5001
+
+    node:
+        build:
+            context: .
+            dockerfile: node.dockerfile
+        volumes:
+            - "./js:/app/js"
+        ports:
+            - "5002:3000"
+        command: npm run start
