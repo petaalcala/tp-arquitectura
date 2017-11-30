@@ -1,0 +1,33 @@
+config:
+  environments:
+    gunicorn:
+      target: 'http://localhost:5001'
+      plugins:
+        statsd:
+          host: "localhost"
+          port: 8125
+          prefix: "gunicorn"
+    flask:
+      target: 'http://localhost:5000'
+      plugins:
+        statsd:
+          host: "localhost"
+          port: 8125
+          prefix: "flask"
+    node:
+      target: 'http://localhost:5002'
+      plugins:
+        statsd:
+          host: "localhost"
+          port: 8125
+          prefix: "node"
+  phases:
+    - name: Potente
+      duration: 30
+      arrivalRate: 10
+
+scenarios:
+  - name: Root
+    flow:
+      - get:
+          url: "/static/a.jpg"

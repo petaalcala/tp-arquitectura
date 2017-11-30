@@ -17,7 +17,7 @@ with open(resources_file) as f:
 
 @application.route("/")
 def root():
-  return 'Hi, Im root 0'
+  return 'Holis'
 
 @application.route("/static/<string:filename>")
 def serve_static(filename):
@@ -25,8 +25,9 @@ def serve_static(filename):
 
 @application.route("/slow")
 def slow():
-  sleep(0.5)
-  return 'Lento'
+  for x in range(0, 10000):
+    a = 4
+  return 'For'
 
 @application.route("/resources/<int:resource_id>")
 def get_resource(resource_id):

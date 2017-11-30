@@ -13,6 +13,12 @@ app.get('/resources/:resource_id', function(req, res) {
   res.send(resources[resource_id]);
 });
 
+app.get('/slow', function(req, res) {
+  for (i = 0; i < 10000; i++) {
+    a = 4
+}
+});
+
 app.listen(3000, function () {
   console.log('listening on port 3000!')
 })
