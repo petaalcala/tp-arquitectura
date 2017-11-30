@@ -14,9 +14,9 @@ app.get('/resources/:resource_id', function(req, res) {
 });
 
 app.get('/slow', function(req, res) {
-  for (i = 0; i < 10000; i++) {
-    a = 4
-}
+  for (i = 0; i < 1000000; i++) {
+  }
+  res.send();
 });
 
 app.listen(3000, function () {

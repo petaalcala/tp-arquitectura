@@ -25,8 +25,8 @@ def serve_static(filename):
 
 @application.route("/slow")
 def slow():
-  for x in range(0, 10000):
-    a = 4
+  for x in range(0, 1000000):
+    'hola'
   return 'For'
 
 @application.route("/resources/<int:resource_id>")

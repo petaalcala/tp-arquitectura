@@ -22,12 +22,21 @@ config:
           port: 8125
           prefix: "node"
   phases:
-    - name: Potente
+    - name: RampUp
       duration: 30
-      arrivalRate: 10
-
+      arrivalRate: 5
+      rampTo: 20
+    - name: Intensive
+      duration: 60
+      arrivalRate: 20
+    - name: Stop
+      pause: 5
+    - name: Quite
+      duration: 30
+      arrivalRate: 5
+      
 scenarios:
-  - name: Root
+  - heavy_image:
     flow:
       - get:
           url: "/static/a.jpg"
